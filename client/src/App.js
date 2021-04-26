@@ -1,34 +1,34 @@
 import { listLogEntries } from './API';
+import LogEntryForm from './LogEntryForm';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
-require('dotenv').config();
+// require('dotenv').config();
 
 const App = () => {
 	const [logEntries, setLogEntries] = useState([]);
+	const [showPopup, setShowPopup] = useState({});
+	const [addEntryLocation, setAddEntryLocation] = useState(null);
 	const [viewport, setViewport] = useState({
 		width: '100vw',
 		height: '100vh',
-		latitude: 35.7577,
-		longitude: -95.4376,
+		latitude: 37.6,
+		longitude: -95.665,
 		zoom: 4,
 	});
 
-	const [showPopup, setShowPopup] = useState({});
-
-	const [addEntryLocation, setaddEntryLocation] = useState(null); //use to set location based on double click
+	const getEntries = async () => {
+		const logEntries = await listLogEntries();
+		setLogEntries(logEntries);
+	};
 
 	useEffect(() => {
-		(async () => {
-			const logEntries1 = await listLogEntries();
-			setLogEntries(logEntries1);
-			console.log(logEntries1);
-		})();
+		getEntries();
 	}, []);
 
-	const showAddMarkerPopup = (e) => {
-		const [longitude, latitude] = e.lngLat; //lnglat is coming from "onDblClick" method
-		setaddEntryLocation({
+	const showAddMarkerPopup = (event) => {
+		const [longitude, latitude] = event.lngLat;
+		setAddEntryLocation({
 			latitude,
 			longitude,
 		});
@@ -43,12 +43,8 @@ const App = () => {
 			onDblClick={showAddMarkerPopup}
 		>
 			{logEntries.map((entry) => (
-				<>
-					<Marker
-						key={entry._id}
-						latitude={entry.latitude}
-						longitude={entry.longitude}
-					>
+				<React.Fragment key={entry._id}>
+					<Marker latitude={entry.latitude} longitude={entry.longitude}>
 						<div onClick={() => setShowPopup({ [entry._id]: true })}>
 							<svg
 								className='marker yellow'
@@ -90,10 +86,11 @@ const App = () => {
 								<small>
 									Visited on: {new Date(entry.visitDate).toLocaleDateString()}
 								</small>
+								{entry.image && <img src='entry.image' alt={entry.title} />}
 							</div>
 						</Popup>
 					) : null}
-				</>
+				</React.Fragment>
 			))}
 
 			{addEntryLocation ? (
@@ -133,11 +130,17 @@ const App = () => {
 						closeButton={true}
 						closeOnClick={false}
 						dynamicPosition={true}
-						onClose={() => setaddEntryLocation(null)}
+						onClose={() => setAddEntryLocation(null)}
 						anchor='top'
 					>
 						<div className='popup'>
-							<h3>Add your new log entry here: </h3>
+							<LogEntryForm
+								onClose={() => {
+									setAddEntryLocation(null);
+									getEntries();
+								}}
+								location={addEntryLocation}
+							/>
 						</div>
 					</Popup>
 				</>
