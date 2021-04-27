@@ -10,7 +10,7 @@ const middlewares = require('./middlewares'); //import the error handling middle
 const logs = require('./api/logs'); //import the API handling file assign to logs.
 
 const app = express();
-
+app.use(cors());
 mongoose
 	.connect(process.env.DATABASE_URL, {
 		useNewUrlParser: true,
@@ -25,7 +25,7 @@ mongoose
 
 app.use(morgan('common'));
 app.use(helmet()); //helps secure Express apps by setting various HTTP headers.
-app.use(cors());
+
 // {
 // 	origin: 'https://travel-blush.vercel.app/api/logs',
 // }

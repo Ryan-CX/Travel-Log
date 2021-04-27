@@ -9,6 +9,7 @@ export async function createLogEntry(entry) {
 	// delete entry.apiKey;
 	const response = await fetch(`${API_URL}/api/logs`, {
 		method: 'POST',
+
 		headers: {
 			'content-type': 'application/json',
 			// 'X-API-KEY': apiKey,
