@@ -26,12 +26,12 @@ body {
 	fill: #f3b73e;
 }
 .popup {
-	width: 20vw;
+	width: auto;
 	padding: 1rem;
 }
 
 .popup img {
-	height: 400px;
+	height: 200px;
 	width: auto;
 	text-align: center;
 	margin: 0 auto;
