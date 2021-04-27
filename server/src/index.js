@@ -11,10 +11,17 @@ const logs = require('./api/logs'); //import the API handling file assign to log
 
 const app = express();
 
-mongoose.connect(process.env.DATABASE_URL, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-});
+mongoose
+	.connect(process.env.DATABASE_URL, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	.then(() => {
+		console.log('connected to MongoDB');
+	})
+	.catch((error) => {
+		console.log('error connecting to MongoDB:', error.message);
+	});
 
 app.use(morgan('common'));
 app.use(helmet()); //helps secure Express apps by setting various HTTP headers.

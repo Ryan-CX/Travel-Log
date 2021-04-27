@@ -41,6 +41,7 @@ const LogEntryForm = ({ onClose, location }) => {
 			></textarea>
 			<label htmlFor='image'>Image Url:</label>
 			<input name='image' {...register('image')} />
+
 			<label htmlFor='visitDate'>Visit Date</label>
 			<input name='visitDate' type='date' required {...register('visitDate')} />
 			<button disabled={loading}>
