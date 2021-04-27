@@ -1,0 +1,21 @@
+{
+	"builds": [
+		{
+			"src": "src/index.js",
+			"use": "@vercel/node"
+		}
+	],
+	"routes": [
+		{
+			"src": "/.*",
+			"dest": "src/index.js"
+		}
+	],
+
+	"env": {
+		"NODE_ENV": "production",
+		"PORT": "1337",
+		"DATABASE_URL": "@travel-log-db",
+		"CORS_ORIGIN": "https://travel-log-murex.vercel.app/"
+	}
+}

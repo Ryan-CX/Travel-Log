@@ -1,7 +1,9 @@
 const API_URL =
 	window.location.hostname === 'localhost'
 		? 'http://localhost:1337'
-		: 'https://travel-history-log.herokuapp.com';
+		: 'https://travel-log-kappa.vercel.app';
+
+//
 
 export async function listLogEntries() {
 	const response = await fetch(`${API_URL}/api/logs`);
