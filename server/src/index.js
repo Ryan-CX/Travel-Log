@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 	});
 });
 
-app.use('/api/logs', logs); // use the api routes in the logs.js file, default path is 3000/api/logs
+app.use('/api/logs', logs); // use the api routes in the logs.js file, default path is 1337/api/logs
 
 app.use(middlewares.notFound);
 

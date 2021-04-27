@@ -1,7 +1,6 @@
 const { Router } = require('express');
 
 const LogEntry = require('../models/LogEntry'); //import the template from LogEntry mongoose schema
-// const { API_KEY } = process.env;
 
 const router = Router();
 
