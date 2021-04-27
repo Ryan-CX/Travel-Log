@@ -1,7 +1,4 @@
-const API_URL =
-	window.location.hostname === 'localhost'
-		? 'http://localhost:1337'
-		: 'https://travel-log-kappa.vercel.app';
+const API_URL = 'https://travel-blush.vercel.app';
 
 //
 
