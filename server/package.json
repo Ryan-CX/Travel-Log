@@ -5,7 +5,10 @@
 	"main": "src/index.js",
 	"scripts": {
 		"start": "node src/index.js",
-		"dev": "nodemon src.index.js"
+		"dev": "nodemon src.index.js",
+		"build": "../../client & npm run build",
+		"install-client": "../../client && npm install",
+		"heroku-postbuild": "npm run install-client && npm run build"
 	},
 	"keywords": [],
 	"author": "xcg",
