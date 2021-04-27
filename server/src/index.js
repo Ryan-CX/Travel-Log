@@ -45,8 +45,6 @@ app.use(middlewares.notFound);
 
 app.use(middlewares.errorHandler);
 
-
-
 const port = process.env.PORT || 1337;
 app.listen(port, () => {
 	console.log(`Listen to port ${port}.`);
