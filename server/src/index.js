@@ -27,7 +27,7 @@ app.use(morgan('common'));
 app.use(helmet()); //helps secure Express apps by setting various HTTP headers.
 app.use(
 	cors({
-		origin: process.env.CORS_ORIGIN, //let any origin can access to our backend
+		origin: 'https://travel-blush.vercel.app/', //let any origin can access to our backend
 	})
 );
 

@@ -1,7 +1,5 @@
 const API_URL = 'https://travel-blush.vercel.app';
 
-//
-
 export async function listLogEntries() {
 	const response = await fetch(`${API_URL}/api/logs`);
 	return response.json();
