@@ -25,11 +25,10 @@ mongoose
 
 app.use(morgan('common'));
 app.use(helmet()); //helps secure Express apps by setting various HTTP headers.
-app.use(
-	cors({
-		origin: 'https://travel-blush.vercel.app/', //let any origin can access to our backend
-	})
-);
+app.use(cors());
+// {
+// 	origin: 'https://travel-blush.vercel.app/api/logs',
+// }
 
 app.use(express.json());
 

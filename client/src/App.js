@@ -3,7 +3,9 @@ import LogEntryForm from './LogEntryForm';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
-// require('dotenv').config();
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
+/* eslint-disable */
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const App = () => {
 	const [logEntries, setLogEntries] = useState([]);
