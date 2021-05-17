@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
 /* eslint-disable */
-mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+mapboxgl.workerClass =
+	require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const App = () => {
 	const [logEntries, setLogEntries] = useState([]);
@@ -29,6 +30,7 @@ const App = () => {
 	}, []);
 
 	const showAddMarkerPopup = (event) => {
+		//onDbClick => showAddMarkerPopup => event.lngLat containing longi and lati and assign to AddEntryLocation
 		const [longitude, latitude] = event.lngLat;
 		setAddEntryLocation({
 			latitude,

@@ -10,7 +10,7 @@ const LogEntryForm = ({ onClose, location }) => {
 	const onSubmit = async (data) => {
 		try {
 			setLoading(true);
-			data.latitude = location.latitude;
+			data.latitude = location.latitude; //the location where doubleclicked and assigned to addEntryLocation
 			data.longitude = location.longitude;
 			await createLogEntry(data);
 
